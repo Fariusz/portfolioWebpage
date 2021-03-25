@@ -19,7 +19,6 @@
     }
 
     a {
-
         text-align: center;
         display: block;
         color: #444;
@@ -65,7 +64,7 @@
         var timeElapsedJob = timeNow.getTime() - timeStartedJob.getTime();
 
         document.getElementById('semestr').innerHTML = (timeElapsedStudies / (1000*60*60*24*30*6)).toPrecision(1);
-        document.getElementById('wiek').innerHTML = ((timeElapsedBorn / (1000*60*60*24*30*12)).toPrecision(2)).toString() + "lata";
+        document.getElementById('wiek').innerHTML = ((timeElapsedBorn / (1000*60*60*24*30*12)).toPrecision(2)).toString() + " lata";
         document.getElementById('doswiadczenie').innerHTML = ((timeElapsedJob / (1000*60*60*24*30)).toPrecision(1)).toString() + " miesięcy";
     }
 </script>
@@ -73,7 +72,9 @@
 <!-- Icon Bar (Sidebar - hidden on small screens) -->
 <nav class="w3-sidebar w3-bar-block w3-small w3-hide-small w3-center">
     <!-- Avatar image in top left corner -->
-    <img src="img/radek.jpg" style="width:100%">
+    <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" style="cursor:default">
+        <img src="img/radek.jpg" style="width:100%">
+    </a>
     <a href="#" class="w3-bar-item w3-button w3-padding-large w3-black">
         <i class="fa fa-home w3-xxlarge"></i>
         <p>Strona główna</p>
@@ -204,7 +205,7 @@
 
     <div class="w3-section">
         <p><i class="fa fa-map-marker fa-fw w3-text-white w3-xxlarge w3-margin-right"></i> Katowice, Polska</p>
-        <p><i class="fa fa-phone fa-fw w3-text-white w3-xxlarge w3-margin-right"></i> Phone: +48 665899617</p>
+        <p><i class="fa fa-phone fa-fw w3-text-white w3-xxlarge w3-margin-right"></i> Telefon: 665899617</p>
         <p><i class="fa fa-envelope fa-fw w3-text-white w3-xxlarge w3-margin-right"> </i> Email: r.loth@icloud.com
         </p>
     </div>
