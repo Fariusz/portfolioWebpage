@@ -8,20 +8,12 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <style>
-    .zoom a:hover{
+    .zoom a:hover {
         transform: scale(1.1);
         transition: all ease 500ms;
     }
 
-    body {
-        background: #e2e2e2;
-        font-family: Play;
-    }
-
     a {
-        text-align: center;
-        display: block;
-        color: #444;
         text-decoration: none;
     }
 
@@ -53,19 +45,17 @@
 </style>
 
 <body onload="date()" class="w3-black">
+<script type="text/javascript" src="https://platform.linkedin.com/badges/js/profile.js" async defer></script>
 <script>
-    function date(){
+    function date() {
         var timeNow = new Date();
-        var timeStartedStudies = new Date(2018,8,1);
-        var timeStartedJob = new Date(2020,7,1);
-        var timeBorn = new Date(1998,7,15)
+        var timeStartedStudies = new Date(2018, 8, 1);
+        var timeStartedJob = new Date(2020, 7, 1);
         var timeElapsedStudies = timeNow.getTime() - timeStartedStudies.getTime();
-        var timeElapsedBorn = timeNow.getTime() - timeBorn.getTime();
         var timeElapsedJob = timeNow.getTime() - timeStartedJob.getTime();
 
-        document.getElementById('semestr').innerHTML = (timeElapsedStudies / (1000*60*60*24*30*6)).toPrecision(1);
-        document.getElementById('wiek').innerHTML = ((timeElapsedBorn / (1000*60*60*24*30*12)).toPrecision(2)).toString() + " lata";
-        document.getElementById('doswiadczenie').innerHTML = ((timeElapsedJob / (1000*60*60*24*30)).toPrecision(1)).toString() + " miesięcy";
+        document.getElementById('semestr').innerHTML = (timeElapsedStudies / (1000 * 60 * 60 * 24 * 30 * 6)).toPrecision(1);
+        document.getElementById('doswiadczenie').innerHTML = ((timeElapsedJob / (1000 * 60 * 60 * 24 * 30)).toPrecision(1)).toString() + " miesięcy";
     }
 </script>
 
@@ -115,7 +105,7 @@
     <div class="w3-content w3-justify w3-text-grey w3-padding-64" id="about">
         <h2 class="w3-text-light-grey">O mnie</h2>
         <hr style="width:200px" class="w3-opacity">
-        <p>Jako dziecko zawsze byłem ciekawy, jak to się dzieje że powstają programy komputerowe.
+        <p style="color: #cccccc">Jako dziecko zawsze byłem ciekawy, jak to się dzieje że powstają programy komputerowe.
             Tata mówił mi że programy pisze się w Pascalu.
             Nie rozumiałem co to znaczy że program się piszę, tymbardziej że w Pascalu... Przecież to nie książka.
             Wówczas na temat Pascala udało mi się dowiedzieć tyle, że urodził się 19 czerwca 1623 w
@@ -126,6 +116,7 @@
             programów?
             <br/><br/>
             Na te i inne pytania staram się pozyskać odpowiedź studiując informatykę na Politechnice Śląskiej.
+
         </p>
         <h3 class="w3-padding-16 w3-text-light-grey">Umiejętności</h3>
         <p class="w3-wide">Java</p>
@@ -166,19 +157,24 @@
         </div>
 
         <div class="zoom w3-quarter w3-section">
-            <a href="https://badges.peoplecert.org/Badge/en/BD027430-36AB-49AF-AA2B-D14F3CBF203F"
+            <a href="https://badges.peoplecert.org/Badge/en/BD027430-36AB-49AF-AA2B-D14F3CBF203F" style="display: block"
                title="LanguageCert Test of English B2 (Listening, Reading)" target="_blank">
             <span class="zoom w3-xlarge">
                 <img src="https://badges.peoplecert.org/Badges/Template/en/180/6c8b1c17-8eda-4b3c-99a0-08102de453c9"
                      width="60" height="54,66666666666667"/>B2
             </span><br>
-            Język angielski
+                Język angielski
             </a>
         </div>
 
-        <div class="w3-quarter w3-section">
-            <span id="wiek" class="w3-xlarge"></span><br>
-            Wiek
+        <div class="zoom w3-quarter w3-section">
+            <a href="https://www.testportal.pl/DownloadCertificate.html?a=89g2%2BxWZ5e0cshHKM4J34A%3D%3D&t=FZ35aKedgPDS"
+            style="display: block">
+                <span class="fa fa-download w3-xxlarge"></span>
+                <p>Python</p>
+               <!-- <span id="python" class="w3-xlarge"></span><br> -->
+
+            </a>
         </div>
 
         <div class="w3-quarter w3-section">
@@ -189,7 +185,7 @@
 </div>
 
 <!-- Portfolio Section -->
-<div class="zoom w3-padding-64 w3-content" id="projects" >
+<div class="zoom w3-padding-64 w3-content" id="projects">
     <h2 class="w3-text-light-grey">Projekty</h2>
     <hr style="width:200px" class="w3-opacity">
 
@@ -201,15 +197,21 @@
 <!-- Contact Section -->
 <div class="w3-padding-64 w3-content w3-text-grey" id="contact">
     <h2 class="w3-text-light-grey">Napisz do mnie</h2>
+
     <hr style="width:200px" class="w3-opacity">
 
     <div class="w3-section">
-        <p><i class="fa fa-map-marker fa-fw w3-text-white w3-xxlarge w3-margin-right"></i> Katowice, Polska</p>
-        <p><i class="fa fa-phone fa-fw w3-text-white w3-xxlarge w3-margin-right"></i> Telefon: 665899617</p>
-        <p><i class="fa fa-envelope fa-fw w3-text-white w3-xxlarge w3-margin-right"> </i> Email: r.loth@icloud.com
-        </p>
+        <p><i class="fa fa-map-marker fa-fw w3-text-white w3-xxlarge w3-margin-right"></i>
+            <a href = "http://maps.google.com/?q=Katowice">Katowice, Polska</a>
+        <p><i class="fa fa-phone fa-fw w3-text-white w3-xxlarge w3-margin-right"></i>
+            <a href="tel:+48665899617">665899617</a></p>
+        <p><i class="fa fa-envelope fa-fw w3-text-white w3-xxlarge w3-margin-right"> </i>
+            <a href = "mailto: r.loth@icloud.com">r.loth@icloud.com</a></p>
     </div>
+    <div  class="LI-profile-badge w3-padding-128"  data-version="v1" data-size="large" data-locale="pl_PL" data-type="horizontal" data-theme="dark" data-vanity="radosław-loth-9a8a201b8"><a class="LI-simple-link" href='https://pl.linkedin.com/in/rados%C5%82aw-loth-9a8a201b8?trk=profile-badge'>Radosław Loth</a></div>
+
     <br>
+
     <p>Bądź w kontakcie, wyślij wiadomość:</p>
 
     <form action="/send.php" target="_blank">
@@ -229,14 +231,18 @@
 
 <!-- Footer -->
 <footer class="w3-content w3-padding-64 w3-text-grey w3-xlarge">
-    <a href="https://github.com/Fariusz" target="_blank" class="w3-hover-text-green"><i
-            class="fa fa-github w3-hover-opacity"></i></a>
-    <a href="https://www.facebook.com/radolot/" target="_blank" class="w3-hover-text-green"><i
-            class="fa fa-facebook-official w3-hover-opacity"></i></a>
-    <a href="https://www.instagram.com/r_loth/" target="_blank" class="w3-hover-text-green"><i
-            class="fa fa-instagram w3-hover-opacity"></i></a>
-    <a href="https://www.linkedin.com/in/radosław-loth-9a8a201b8/" target="_blank" class="w3-hover-text-green"><i
-            class="fa fa-linkedin w3-hover-opacity"></i></a>
+    <a href="https://github.com/Fariusz" target="_blank" class="w3-hover-text-green">
+        <i class="fa fa-github w3-hover-opacity"></i>
+    </a>
+    <a href="https://www.facebook.com/radolot/" target="_blank" class="w3-hover-text-green">
+        <i class="fa fa-facebook-official w3-hover-opacity"></i>
+    </a>
+    <a href="https://www.instagram.com/r_loth/" target="_blank" class="w3-hover-text-green">
+        <i class="fa fa-instagram w3-hover-opacity"></i>
+    </a>
+    <a href="https://www.linkedin.com/in/radosław-loth-9a8a201b8/" target="_blank" class="w3-hover-text-green">
+        <i class="fa fa-linkedin w3-hover-opacity"></i>
+    </a>
     <!-- End footer -->
 </footer>
 <!-- END PAGE CONTENT -->
