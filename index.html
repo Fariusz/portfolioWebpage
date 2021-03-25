@@ -68,7 +68,6 @@
         document.getElementById('wiek').innerHTML = (timeElapsedBorn / (1000*60*60*24*30*12)).toPrecision(2);
         document.getElementById('doswiadczenie').innerHTML = ((timeElapsedJob / (1000*60*60*24*30)).toPrecision(1)).toString() + " miesięcy";
     }
-
 </script>
 
 <!-- Icon Bar (Sidebar - hidden on small screens) -->
@@ -189,11 +188,12 @@
 </div>
 
 <!-- Portfolio Section -->
-<div class="w3-padding-64 w3-content" >
+<div class="zoom w3-padding-64 w3-content" >
     <h2 class="w3-text-light-grey">Projekty</h2>
     <hr style="width:200px" class="w3-opacity">
+
     <a href="https://github.com/Fariusz?tab=repositories">
-        <button style="font-size:48px"><i class="fa fa-github"></i></button>
+        <button class="zoom" style="font-size:48px"><i class="fa fa-github"></i></button>
     </a>
 </div>
 
@@ -236,9 +236,6 @@
             class="fa fa-instagram w3-hover-opacity"></i></a>
     <a href="https://www.linkedin.com/in/radosław-loth-9a8a201b8/" target="_blank" class="w3-hover-text-green"><i
             class="fa fa-linkedin w3-hover-opacity"></i></a>
-
-    <p class="w3-medium">Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank"
-                                       class="w3-hover-text-green">w3.css</a></p>
     <!-- End footer -->
 </footer>
 <!-- END PAGE CONTENT -->
