@@ -6,5 +6,5 @@ $sender = $_GET['Email'];
 $message .= "\r\n" . 'nadawca: ' . $sender;
 $headers = 'From: ' . $sender;
 mail($to, $subject, $message, $headers);
-header("Location: ../index.html");
+header("Location: ../index.html#contact");
 ?>
