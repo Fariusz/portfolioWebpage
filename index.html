@@ -46,13 +46,16 @@
 <script>
     function date() {
         var timeNow = new Date();
+
         var timeStartedStudies = new Date(2018, 8, 1);
-        var timeStartedJob = new Date(2020, 7, 1);
         var timeElapsedStudies = timeNow.getTime() - timeStartedStudies.getTime();
+
+        var timeStartedJob = new Date(2020, 7, 1);
         var timeElapsedJob = timeNow.getTime() - timeStartedJob.getTime();
+        console.log("timeElapsedJob" + timeElapsedJob);
 
         document.getElementById('semestr').innerHTML = (timeElapsedStudies / (1000 * 60 * 60 * 24 * 30 * 6)).toPrecision(1);
-        document.getElementById('doswiadczenie').innerHTML = ((timeElapsedJob / (1000 * 60 * 60 * 24 * 30)).toPrecision(1)).toString() + " miesięcy";
+        document.getElementById('doswiadczenie').innerHTML = (timeElapsedJob / (1000 * 60 * 60 * 24 * 30)).toFixed(0) + " miesięcy";
     }
 </script>
 
