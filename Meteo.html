@@ -25,7 +25,7 @@
 <nav class="w3-sidebar w3-bar-block w3-small w3-hide-small w3-center">
     <!-- Avatar image in top left corner -->
     <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" style="cursor:default">
-        <img src="img/radek.jpg" style="width:100%">
+        <img src="img/radek.png" style="width:100%">
     </a>
     <a href="http://radek.loth.cba.pl/#" class="w3-bar-item w3-button w3-padding-large w3-black">
             <i class="fa fa-home w3-xxlarge"></i>
@@ -63,8 +63,9 @@
         <h2 class="w3-text-light-grey">Konsolowa aplikacja pogodowa </h2>
         <hr style="width:200px" class="w3-opacity">
         <p>
-            Aplikacja pobiera informacje na temat dostępnych stacji meteorologicznych, wyświetla je i oczekuje na odpowiedź użytkownika.
-            Po wybraniu odpowiedniej stacji, aplikacja wyświetla informacje pogodowe otrzymane od wybranej stacji meteorologicznej.
+            Aplikacja służy do komunikacji warstwy bazodanowej z warstwą aplikacji za pomocą wywołań protokołu http.
+            Program wywołuje interfejs REST za pomocą poleceń URL i pobiera dane o dostępnych stacjach pomiarowych wraz z ich geolokalizacją.
+            W kolejnym kroku program zwraca informacje o bieżących pomiarach dla danej geolokalizacji.
         </p>
         <a href="https://github.com/Fariusz/weather_app/blob/main/Program.cs">
         <button class="w3-button w3-light-grey w3-padding-large w3-section">
