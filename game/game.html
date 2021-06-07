@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html>
+<title>Game</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<head>
+
+  <meta charset="utf-8" />
+  <title>Gra</title>
+
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script> <!--Odwołanie do biblioteki JQuery. Można plik ściągnąć do swojego serwisu.-->
+
+
+  <script type="text/javascript">
+
+    var xb = 100, yb = 100; //współrzędne początkowe bohatera, widoczne w całym skrypcie
+    var xp = 700 - 50, yp = 550 - 50; //współrzędne początkowe potwora
+    var xp2 = 700 - 50, yp2 = 350;
+    var xp3 = 700 - 50, yp3 = 50;
+    var xo = 0, yo = 0;
+    var xo2 = 0, yo2 = 600 - 50;
+    var xo3 = 700 - 50, yo3 = 0;
+    var xo4 = 700 - 50, yo4 = 600 - 50;
+    var xd = 250, yd = 250;
+    var czas = 0;
+    var automat; //zmienna globalna na automat zdarzeń czasowych
+    var ognie;
+    var duch;
+
+    function Koniec() {
+      $('audio#gameover')[0].play();
+
+      clearInterval(ognie); //wyłaczenie działania potwora
+      clearInterval(automat);
+      clearInterval(duch);
+      alert('Game over. Punkty:' + czas);
+
+      location.reload().delay(5000);
+    }
+
+    $(function () {
+
+      $("#start").click(function () {
+        $("#start").css({ display: 'none' });
+        $("#start").blur(); // zdjęcie aktywności z przycisku, aby nie przejmował na siebie zdarzeń keydown
+        automat = setInterval(Goń, 40); //automatyczne wywołanie funkcji Goń co 40 ms, 25 razy na sekundę
+        setInterval(function () { czas++; }, 1000);    //zapamiętanie w zmiennej globalnej automat uchwytu zegara, w celu jego późniejszego zatrzymania
+        ognie = setInterval(Zgiń, 40);
+        duch = setInterval(RuchLosowy, 1000);
+        setInterval(SprawdzajMonety, 20);
+      });
+
+      $(document).keydown(function (e) { //zdarzenie naciśnięcia klawisza
+        if (e.which == 39 /* kod klawisza -> */ && xb <= 700 - 50 /* blokada ucieczki w prawo */)
+          xb += 5;
+        if (e.which == 37 /* kod klawisza <- */ && xb > 0 /* blokada ucieczki w lewo */)
+          xb -= 5;
+        if (e.which == 40 && yb <= 600 - 50)
+          yb += 5;
+        if (e.which == 38 && yb > 0)
+          yb -= 5;
+
+        $('#bohater').css({ left: xb + 'px', top: yb + 'px' });  //do wartości musi być doklejona jednostka np. px
+
+      });
+
+
+
+    });
+
+    function SprawdzajMonety()
+    {
+      var off = 40;
+      var off1 = 40;
+      var off2 = 40;
+      var off3 = 40;
+      var off4 = 40;
+      var off5 = 40;
+
+      if (Math.sqrt(Math.pow(xb - 550, 2) + Math.pow(yb - 500, 2)) < off) //wzór na odległość 2 punktów na płaszczyźnie
+      {
+        $('audio#zebrane')[0].play();
+        $("#moneta").hide();
+        czas++;
+        off = 0;
+      }
+
+      if (Math.sqrt(Math.pow(xb - 450, 2) + Math.pow(yb - 450, 2)) < off1) //wzór na odległość 2 punktów na płaszczyźnie
+      {
+        $('audio#zebrane')[0].play();
+        $("#moneta2").hide();
+        czas++;
+        off1 = 0;
+      }
+
+      if (Math.sqrt(Math.pow(xb - 350, 2) + Math.pow(yb - 350, 2)) < off2) //wzór na odległość 2 punktów na płaszczyźnie
+      {
+        $('audio#zebrane')[0].play();
+        $("#moneta3").hide();
+        czas++;
+        off2 = 0;
+      }
+
+      if (Math.sqrt(Math.pow(xb - 250, 2) + Math.pow(yb - 250, 2)) < off3) //wzór na odległość 2 punktów na płaszczyźnie
+      {
+        $('audio#zebrane')[0].play();
+        $("#moneta4").hide();
+        czas++;
+        off3 = 0;
+      }
+
+      if (Math.sqrt(Math.pow(xb - 150, 2) + Math.pow(yb - 150, 2)) < off4) //wzór na odległość 2 punktów na płaszczyźnie
+      {
+        $('audio#zebrane')[0].play();
+        $("#moneta5").hide();
+        czas++;
+        off4 = 0;
+      }
+
+      if (Math.sqrt(Math.pow(xb - 50, 2) + Math.pow(yb - 50, 2)) < off5) //wzór na odległość 2 punktów na płaszczyźnie
+      {
+        $('audio#zebrane')[0].play();
+        $("#moneta6").hide();
+        czas++;
+        off5 = 0;
+      }
+
+
+    }
+
+    function Zgiń() {
+      $('#ogien').css({ left: xo + 'px', top: yo + 'px' });
+      $('#ogien2').css({ left: xo2 + 'px', top: yo2 + 'px' });
+      $('#ogien3').css({ left: xo3 + 'px', top: yo3 + 'px' });
+      $('#ogien4').css({ left: xo4 + 'px', top: yo4 + 'px' });
+
+      if (Math.sqrt(Math.pow(xb - xo, 2) + Math.pow(yb - yo, 2)) < 40) //wzór na odległość 2 punktów na płaszczyźnie
+      {
+        Koniec();
+      }
+
+      if (Math.sqrt(Math.pow(xb - xo2, 2) + Math.pow(yb - yo2, 2)) < 40) //wzór na odległość 2 punktów na płaszczyźnie
+      {
+        Koniec();
+      }
+
+      if (Math.sqrt(Math.pow(xb - xo3, 2) + Math.pow(yb - yo3, 2)) < 40) //wzór na odległość 2 punktów na płaszczyźnie
+      {
+        Koniec();
+      }
+
+      if (Math.sqrt(Math.pow(xb - xo4, 2) + Math.pow(yb - yo4, 2)) < 40) //wzór na odległość 2 punktów na płaszczyźnie
+      {
+        Koniec();
+      }
+
+    }
+
+    function RuchLosowy() {
+      var los = Math.floor(Math.random() * 10);
+
+      if (los > 5 && xd <= 700 - 50 && xb > 0) {
+        xd -= Math.floor((Math.random() * 150) + 1);
+      }
+
+      if (los < 5 && xd <= 700 - 50 && xb > 0) {
+        xd += Math.floor((Math.random() * 150) + 1);
+      }
+
+      if (los < 5 && yd <= 600 - 50 && yd > 0) {
+        yd -= Math.floor((Math.random() * 150) + 1);
+      }
+
+      if (los < 5 && yd <= 600 - 50 && yd > 0) {
+        yd += Math.floor((Math.random() * 150) + 1);
+      }
+
+      $('#duch').css({ left: xd + 'px', top: yd + 'px' });
+
+      if (Math.sqrt(Math.pow(xb - xd, 2) + Math.pow(yb - yd, 2)) < 30) //wzór na odległość 2 punktów na płaszczyźnie
+      {
+        Koniec();
+      }
+    }
+
+    // "Sztuczna inteligencja"  potwora
+    function Goń() {
+      if (xp > xb) xp -= 4;
+      if (xp < xb) xp += 4;
+      if (yp > yb) yp -= 4;
+      if (yp < yb) yp += 4;
+
+      if (xp2 > xb) xp2 -= 4;
+      if (xp2 < xb) xp2 += 4;
+      if (yp2 > yb) yp2 -= 4;
+      if (yp2 < yb) yp2 += 4;
+
+      if (xp3 > xb) xp3 -= 4;
+      if (xp3 < xb) xp3 += 4;
+      if (yp3 > yb) yp3 -= 4;
+      if (yp3 < yb) yp3 += 4;
+
+      $('#potwor').css({ left: xp + 'px', top: yp + 'px' });
+      $('#potwor2').css({ left: xp2 + 'px', top: yp2 + 'px' });
+      $('#potwor3').css({ left: xp3 + 'px', top: yp3 + 'px' });
+
+      //Wykrycie kontaktu, wymagana tolerancja
+      if (Math.sqrt(Math.pow(xb - xp, 2) + Math.pow(yb - yp, 2)) < 10) //wzór na odległość 2 punktów na płaszczyźnie
+      {
+        Koniec();
+      }
+
+      if (Math.sqrt(Math.pow(xb - xp2, 2) + Math.pow(yb - yp2, 2)) < 10) //wzór na odległość 2 punktów na płaszczyźnie
+      {
+        Koniec();
+      }
+
+      if (Math.sqrt(Math.pow(xb - xp3, 2) + Math.pow(yb - yp3, 2)) < 10) //wzór na odległość 2 punktów na płaszczyźnie
+      {
+        Koniec();
+      }
+    }
+
+  </script>
+
+</head>
+
+<style>
+  a {text-decoration: none;}
+  body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
+  .w3-row-padding img {margin-bottom: 12px}
+  /* Set the width of the sidebar to 120px */
+  .w3-sidebar {width: 120px;background: #222;}
+  /* Add a left margin to the "page content" that matches the width of the sidebar (120px) */
+  #main {margin-left: 120px}
+  /* Remove margins from "page content" on small screens */
+  @media only screen and (max-width: 600px) {#main {margin-left: 0}}
+</style>
+<body class="w3-black">
+
+<!-- Navbar on small screens (Hidden on medium and large screens) -->
+<div class="w3-top w3-hide-large w3-hide-medium" id="myNavbar">
+  <div class="w3-bar w3-black w3-opacity w3-hover-opacity-off w3-center w3-small">
+    <a href="http://radek.loth.cba.pl/#" class="w3-bar-item w3-button" style="width:25% !important">Strona główna</a>
+    <a href="http://radek.loth.cba.pl/#about" class="w3-bar-item w3-button" style="width:25% !important">O mnie</a>
+    <a href="http://radek.loth.cba.pl/#projects" class="w3-bar-item w3-button" style="width:25% !important">Projekty</a>
+    <a href="http://radek.loth.cba.pl/#contact" class="w3-bar-item w3-button" style="width:25% !important">Kontakt</a>
+  </div>
+</div>
+
+<!-- Page Content -->
+<div class="w3-padding-large" id="main">
+
+  <!-- Portfolio Section -->
+  <div class="w3-padding-64 w3-content" id="photos">
+    <h2 class="w3-text-light-grey">My Photos</h2>
+    <hr style="width:200px" class="w3-opacity">
+
+
+        <img src="plansza.jpg" style="position:absolute;left:0px;top:0px;width:700px;height:600px" />
+        <img id="bohater" src="bohater.gif" style="position:absolute;left:100px;top:100px;width:50px;height:50px" />
+
+        <img id="potwor" src="potwor.gif" style="position:absolute;left:650px;top:500px;width:50px;height:50px" />
+        <img id="potwor2" src="potwor2.gif" style="position:absolute;left:650px;top:280px;width:50px;height:50px" />
+        <img id="potwor3" src="potwor3.gif" style="position:absolute;left:650px;top:50px;width:50px;height:50px" />
+
+        <img id="ogien" src="ogien.gif" style="position:absolute;left:0px;top:0px;width:50px;height:50px" />
+        <img id="ogien2" src="ogien.gif" style="position:absolute;left:0px;top:550px;width:50px;height:50px" />
+        <img id="ogien3" src="ogien.gif" style="position:absolute;left:650px;top:0px;width:50px;height:50px" />
+        <img id="ogien4" src="ogien.gif" style="position:absolute;left:650px;top:550px;width:50px;height:50px" />
+
+
+        <img id="moneta" src="moneta.gif" style="position:absolute;left:550px;top:500px;width:50px;height:50px"/>
+        <img id="moneta2" src="moneta.gif" style="position:absolute;left:450px;top:450px;width:50px;height:50px"/>
+        <img id="moneta3" src="moneta.gif" style="position:absolute;left:350px;top:350px;width:50px;height:50px"/>
+        <img id="moneta4" src="moneta.gif" style="position:absolute;left:250px;top:250px;width:50px;height:50px"/>
+        <img id="moneta5" src="moneta.gif" style="position:absolute;left:150px;top:150px;width:50px;height:50px"/>
+        <img id="moneta6" src="moneta.gif" style="position:absolute;left:50px;top:50px;width:50px;height:50px"/>
+
+        <audio id="gameover" controls style="display:none">
+          <source src="Retro-game-over-sound-effect.mp3" type="audio/mpeg">
+        </audio>
+
+        <audio id="zebrane" controls="controls" style="display:none">
+          <source src="Coin-collect-sound-effect.mp3" type="audio/mpeg" />
+        </audio>
+
+        <img id="duch" src="duch.gif" style="position:absolute;left:300px;top:300px;width:50px;height:50px" />
+
+        <button id="start" type="button" style="position:absolute;left:0px;top:600px" ;>Start</button>
+
+    <a href="https://github.com/Fariusz/Web_game/blob/main/Gra%20JQuery/Gra.html">
+    <button class="w3-button w3-light-grey w3-padding-large w3-section" style="position:absolute;left:0px;top:700px">
+      <i class="fa fa-github"></i>  Zobacz kod
+    </button>
+    </a>
+      <!-- End photo grid -->
+    </div>
+    <!-- End Portfolio Section -->
+
+    <!-- Footer -->
+    <footer class="w3-content w3-padding-64 w3-text-grey w3-xlarge">
+      <a href="https://github.com/Fariusz" target="_blank" class="w3-hover-text-green">
+        <i class="fa fa-github w3-hover-opacity"></i>
+      </a>
+      <a href="https://www.facebook.com/radolot/" target="_blank" class="w3-hover-text-green">
+        <i class="fa fa-facebook-official w3-hover-opacity"></i>
+      </a>
+      <a href="https://www.instagram.com/r_loth/" target="_blank" class="w3-hover-text-green">
+        <i class="fa fa-instagram w3-hover-opacity"></i>
+      </a>
+      <a href="https://www.linkedin.com/in/radosław-loth-9a8a201b8/" target="_blank" class="w3-hover-text-green">
+        <i class="fa fa-linkedin w3-hover-opacity"></i>
+      </a>
+      <!-- End footer -->
+    </footer>
+
+    <!-- END PAGE CONTENT -->
+  </div>
+
+</body>
+</html>
