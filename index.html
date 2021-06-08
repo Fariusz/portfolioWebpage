@@ -25,18 +25,36 @@
 <body onload="date()" class="w3-black">
 <script type="text/javascript" src="https://platform.linkedin.com/badges/js/profile.js" async defer></script>
 <script>
+    function timeDifference(d, dd) {
+        var hour = 60 * 60 * 1000,
+            day = hour * 24,
+            month = day * 30,
+            ms = Math.abs(d - dd),
+            months = parseInt(ms / month, 10);
+
+        ms = ms - months * month;
+        var days = parseInt(ms / day, 10);
+        ms -= days * day;
+        var hours = parseInt(ms / hour, 10);
+        ms -= hours * hour;
+
+        return [
+            months + " miesięcy"
+        ].join(", ");
+    };
+
     function date() {
         var timeNow = new Date();
 
         var timeStartedStudies = new Date(2018, 8, 1);
         var timeElapsedStudies = timeNow.getTime() - timeStartedStudies.getTime();
 
-        var timeStartedJob = new Date(2020, 7, 1);
-        var timeElapsedJob = timeNow.getTime() - timeStartedJob.getTime();
+        var timeStartedJob = new Date("07/01/2020 08:00 AM");
+        var timeElapsedJob = new Date();
         console.log("timeElapsedJob" + timeElapsedJob);
 
         document.getElementById('semestr').innerHTML = (timeElapsedStudies / (1000 * 60 * 60 * 24 * 30 * 6)).toPrecision(1);
-        document.getElementById('doswiadczenie').innerHTML = (timeElapsedJob / (1000 * 60 * 60 * 24 * 30)).toFixed(0) + " miesięcy";
+        document.getElementById('doswiadczenie').innerHTML += timeDifference(timeStartedJob, timeElapsedJob);
     }
 </script>
 
@@ -58,6 +76,10 @@
         <i class="fa fa-github w3-xxlarge"></i>
         <p>Projekty</p>
     </a>
+    <a href="#downloads" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+        <i class="fa fa-download w3-xxlarge"></i>
+        <p>Do pobrania</p>
+    </a>
     <a href="#contact" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
         <i class="fa fa-envelope w3-xxlarge"></i>
         <p>Kontakt</p>
@@ -70,6 +92,7 @@
         <a href="#" class="w3-bar-item w3-button" style="width:25% !important">Strona główna</a>
         <a href="#about" class="w3-bar-item w3-button" style="width:25% !important">O mnie</a>
         <a href="#projects" class="w3-bar-item w3-button" style="width:25% !important">Projekty</a>
+        <a href="#downloads" class="w3-bar-item w3-button" style="width:25% !important">Do pobrania</a>
         <a href="#contact" class="w3-bar-item w3-button" style="width:25% !important">Kontakt</a>
     </div>
 </div>
@@ -104,7 +127,7 @@
 
             <div class="w3-quarter w3-section">
                 <span id="doswiadczenie" class="w3-xlarge"></span><br>
-                Staż w IT
+                w IT
             </div>
 
             <div class="zoom w3-quarter w3-section">
@@ -119,9 +142,9 @@
             </div>
 
             <div class="zoom w3-quarter w3-section">
-                <a href="https://www.linkedin.com/in/radoslaw-loth/"
+                <a href="files\CV.pdf"
                    style="display: block">
-                    <span class="fa fa-linkedin w3-xxlarge"></span><br>
+                    <span class="fa fa-file w3-xxlarge"></span><br>
                     <span>Pobierz CV</span>
                 </a>
             </div>
@@ -176,13 +199,34 @@
                 </a>
             </div>
             <div class="zoomMax w3-quarter w3-section">
+                <a href="http://www.backup.loth.cba.pl"
+                   style="display: block">
+                    <img class="w3-section" src="img\backup0.png" style="width:100%"><br>
+                    <span>Usługa tworząca kopie zapasowe według wcześniej ustalonych ustawień.</span>
+                </a>
+            </div>
+            <div class="zoomMax w3-quarter w3-section">
                 <a href="https://github.com/Fariusz"
                    style="display: block">
                     <img src="img/radek.png" style="width: 65%">
                     <span>Zachęcam do odwiedzenia mojego profilu na github.</span>
                 </a>
             </div>
+        </div>
+    <!-- Downloads Section -->
+        <div class="w3-padding-64 w3-content w3-text-grey" id="downloads">
+            <h2 class="w3-text-light-grey">Do pobrania</h2>
+            <hr style="width:200px" class="w3-opacity">
 
+            <button class="w3-button w3-light-grey w3-padding-large w3-section">
+                <a href="files\certyfikatPython.pdf"><i class="fa fa-download"></i> Certyfikat Python</a>
+            </button>
+            <button class="w3-button w3-light-grey w3-padding-large w3-section">
+                <a href="files\certyfikatAngielski.pdf"><i class="fa fa-download"></i> Certyfikat angielski</a>
+            </button>
+            <button class="w3-button w3-light-grey w3-padding-large w3-section">
+                <a href="files\CV.pdf"><i class="fa fa-download"></i> Curriculum vitae</a>
+            </button>
         </div>
 
     <!-- Contact Section -->
