@@ -2,16 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9cd6da48-1716-44d7-85c6-d0462f522d0e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/backup.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/szum.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Meteo.html" beforeDir="false" afterPath="$PROJECT_DIR$/Meteo.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/header_gradient100.png" beforeDir="false" afterPath="$PROJECT_DIR$/img/header_gradient100.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/img.zip" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/passwordgenerator.html" beforeDir="false" afterPath="$PROJECT_DIR$/passwordgenerator.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/portfolioWebpage.zip" beforeDir="false" afterPath="$PROJECT_DIR$/portfolioWebpage.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projectTemplate.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/shop/shop.html" beforeDir="false" afterPath="$PROJECT_DIR$/shop/shop.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring.html" beforeDir="false" afterPath="$PROJECT_DIR$/spring.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,6 +60,7 @@
       <workItem from="1623067575413" duration="1893000" />
       <workItem from="1623070988867" duration="452000" />
       <workItem from="1623142796137" duration="5971000" />
+      <workItem from="1623221314394" duration="1251000" />
     </task>
     <servers />
   </component>
@@ -82,5 +77,6 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>
